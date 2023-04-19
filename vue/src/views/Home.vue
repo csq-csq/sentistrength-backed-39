@@ -23,16 +23,15 @@ export default {
   },
   methods:{
     onSubmit() {
-      console.log('submit!');
+      // console.log('submit!');
       request
           .post('/quickTest', {
             text: this.form.text,
           })
-          .then(successResponse => {
-            console.log(successResponse.code)
-          })
-          .catch(failResponse => {
-            console.log('fail!');
+          .then(Response => {
+            console.log(Response.code)
+            console.log(Response.message)
+            console.log(Response.result)
           })
     },
   }

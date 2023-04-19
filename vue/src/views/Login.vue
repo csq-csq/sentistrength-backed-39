@@ -35,8 +35,10 @@ export default {
             if (successResponse.code === 200) {
               this.$router.replace({path: '/home'})
             }
+            console.log(successResponse.message)
           })
           .catch(failResponse => {
+            console.log(failResponse.message)
           })
     }
   }

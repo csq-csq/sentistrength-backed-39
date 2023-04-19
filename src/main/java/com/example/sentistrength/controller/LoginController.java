@@ -2,6 +2,7 @@ package com.example.sentistrength.controller;
 
 import com.example.sentistrength.entity.User;
 import com.example.sentistrength.result.Result;
+import com.example.sentistrength.result.ResultFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
@@ -21,9 +22,9 @@ public class LoginController {
         if (!Objects.equals("admin", username) || !Objects.equals("123456", requestUser.getPassword())) {
             String message = "账号密码错误";
             System.out.println("test");
-            return new Result(400);
+            return ResultFactory.buildFailResult(message);
         } else {
-            return new Result(200);
+            return ResultFactory.buildSuccessResult(username);
         }
     }
 

@@ -2,6 +2,7 @@ package com.example.sentistrength.controller;
 
 import com.example.sentistrength.entity.ShortText;
 import com.example.sentistrength.result.Result;
+import com.example.sentistrength.result.ResultFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,6 @@ public class QuickTestController {
     @ResponseBody
     public Result reportingOptions(@RequestBody ShortText shortText) {
         System.out.println(shortText);
-        return new Result(200);
+        return ResultFactory.buildSuccessResult("QuickTest");
     }
 }
