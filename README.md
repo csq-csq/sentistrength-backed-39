@@ -1,7 +1,5 @@
 # Sentistrength Springboot
 
-test
-test
 
 
 ## Getting started
