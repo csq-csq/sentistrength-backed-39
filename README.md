@@ -1,6 +1,5 @@
-# sentistrength-backed-39
+# Sentistrength Springboot
 
-test
 
 
 ## Getting started
@@ -16,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://git.nju.edu.cn/201250107/sentistrength-backed-39.git
-git branch -M main
-git push -uf origin main
+git remote add origin http://172.29.4.49/39/sentistrength-springboot.git
+git branch -M master
+git push -uf origin master
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://git.nju.edu.cn/201250107/sentistrength-backed-39/-/settings/integrations)
+- [ ] [Set up project integrations](http://172.29.4.49/39/sentistrength-springboot/-/settings/integrations)
 
 ## Collaborate with your team
 
