@@ -1,0 +1,14 @@
+spring:
+  servlet:
+    multipart:
+      # 单个文件最大大小
+      max-file-size: 50MB
+      # 所有上传文件最大大小
+      max-request-size: 50MB
+
+server:
+  port: 8080
+
+files:
+  upload:
+    path: C:\Users\Windows\Documents\codes\SE3\2\sentistrength-backed-39\src\main\resources\files\
