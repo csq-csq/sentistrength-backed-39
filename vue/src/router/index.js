@@ -15,6 +15,7 @@ const routes = [
       {path: 'reportingOptions', name: 'ReportingOptions', component: () => import('../views/ReportingOptions.vue')},
       {path: 'sentimentAnalysisOptions', name: 'SentimentAnalysisOptions', component: () => import('../views/SentimentAnalysisOptions.vue')},
       {path: 'login', name: 'Login', component: () => import('../views/Login.vue')},
+      {path: 'file', name: 'File', component: () => import('../views/File.vue')}
     ]
   },
 

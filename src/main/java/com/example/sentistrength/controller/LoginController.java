@@ -9,7 +9,7 @@ import org.springframework.web.util.HtmlUtils;
 
 import java.util.Objects;
 
-@Controller
+@RestController
 public class LoginController {
     @CrossOrigin
     @PostMapping(value = "/api/login")
