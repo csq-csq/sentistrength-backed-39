@@ -9,8 +9,8 @@
         <template slot="title"><i class="el-icon-setting"></i>Sentiment Analysis Options</template>
       </el-menu-item>
 
-      <el-menu-item index="/reportingOptions">
-        <template slot="title"><i class="el-icon-setting"></i>Reporting Options</template>
+      <el-menu-item index="/SentiArgs">
+        <template slot="title"><i class="el-icon-setting"></i>SentiArgs</template>
       </el-menu-item>
 
       <el-menu-item index="/login">

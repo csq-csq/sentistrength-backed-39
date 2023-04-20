@@ -12,7 +12,7 @@ const routes = [
     redirect: '/home',
     children:[
       {path: 'home', name: 'Home', component: () => import('../views/Home.vue')},
-      {path: 'reportingOptions', name: 'ReportingOptions', component: () => import('../views/ReportingOptions.vue')},
+      {path: 'sentiArgs', name: 'SentiArgs', component: () => import('../views/SentiArgs.vue')},
       {path: 'sentimentAnalysisOptions', name: 'SentimentAnalysisOptions', component: () => import('../views/SentimentAnalysisOptions.vue')},
       {path: 'login', name: 'Login', component: () => import('../views/Login.vue')},
       {path: 'file', name: 'File', component: () => import('../views/File.vue')}
