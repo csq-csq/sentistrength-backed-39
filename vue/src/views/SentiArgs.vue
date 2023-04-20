@@ -1,22 +1,22 @@
 <template>
   <el-form ref="form" :model="form">
-    <el-form-item label="input">
-      <el-radio-group v-model="form.input">
-        <el-radio label='input'>是</el-radio>
-        <el-radio label=''>否</el-radio>
-      </el-radio-group>
-      <el-input v-model='form.inputstring' placeholder="文件路径" :disabled="form.input==''"></el-input>
-      <el-divider></el-divider>
-    </el-form-item>
+<!--    <el-form-item label="input">-->
+<!--      <el-radio-group v-model="form.input">-->
+<!--        <el-radio label='input'>是</el-radio>-->
+<!--        <el-radio label=''>否</el-radio>-->
+<!--      </el-radio-group>-->
+<!--      <el-input v-model='form.inputstring' placeholder="文件路径" :disabled="form.input==''"></el-input>-->
+<!--      <el-divider></el-divider>-->
+<!--    </el-form-item>-->
 
-    <el-form-item label="inputfolder">
-      <el-radio-group v-model="form.inputfolder">
-        <el-radio label='inputfolder'>是</el-radio>
-        <el-radio label=''>否</el-radio>
-      </el-radio-group>
-      <el-input v-model='form.inputfolderstring' placeholder="文件夹路径" :disabled="form.inputfolder==''"></el-input>
-      <el-divider></el-divider>
-    </el-form-item>
+<!--    <el-form-item label="inputfolder">-->
+<!--      <el-radio-group v-model="form.inputfolder">-->
+<!--        <el-radio label='inputfolder'>是</el-radio>-->
+<!--        <el-radio label=''>否</el-radio>-->
+<!--      </el-radio-group>-->
+<!--      <el-input v-model='form.inputfolderstring' placeholder="文件夹路径" :disabled="form.inputfolder==''"></el-input>-->
+<!--      <el-divider></el-divider>-->
+<!--    </el-form-item>-->
 
     <el-form-item label="outputfolder">
       <el-radio-group v-model="form.outputfolder">
