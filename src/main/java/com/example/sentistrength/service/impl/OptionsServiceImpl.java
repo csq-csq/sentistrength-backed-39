@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 public class OptionsServiceImpl implements OptionsService {
 
     @Override
+    public void SentiArgs(){
+
+    }
+
+    @Override
     public void AnalysisOptions(){
 
     }
