@@ -11,6 +11,9 @@ public class FileServiceImpl {
     public void changeDictionaryFolder(String folderPath){
         SentiStrength sentiStrength = SentiStrengthManager.getInstance();
         ClassificationResources resources = sentiStrength.getCorpus().resources;
+        resources.setNewDictionaryFolder(folderPath);
     }
+
+
 
 }
