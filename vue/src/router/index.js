@@ -15,7 +15,8 @@ const routes = [
       {path: 'sentiArgs', name: 'SentiArgs', component: () => import('../views/SentiArgs.vue')},
       {path: 'options', name: 'Options', component: () => import('../views/Options.vue')},
       {path: 'login', name: 'Login', component: () => import('../views/Login.vue')},
-      {path: 'file', name: 'File', component: () => import('../views/File.vue')}
+      {path: 'file', name: 'File', component: () => import('../views/File.vue')},
+      {path: 'output', name: 'Output', component: () => import('../views/Output.vue')},
     ]
   },
 

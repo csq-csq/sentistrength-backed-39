@@ -1,5 +1,13 @@
 <template>
   <el-form ref="form" :model="form">
+
+    <el-form-item label="isFolder">
+      <el-radio-group v-model="form.isFolder">
+        <el-radio label='isFolder'>是</el-radio>
+        <el-radio label=''>否</el-radio>
+      </el-radio-group>
+      <el-divider></el-divider>
+    </el-form-item>
 <!--    <el-form-item label="input">-->
 <!--      <el-radio-group v-model="form.input">-->
 <!--        <el-radio label='input'>是</el-radio>-->
@@ -17,6 +25,7 @@
 <!--      <el-input v-model='form.inputfolderstring' placeholder="文件夹路径" :disabled="form.inputfolder==''"></el-input>-->
 <!--      <el-divider></el-divider>-->
 <!--    </el-form-item>-->
+
 
     <el-form-item label="outputfolder">
       <el-radio-group v-model="form.outputfolder">
@@ -54,7 +63,7 @@
     </el-form-item>
 
     <el-form-item label="text">
-      <el-radio-group v-model="form.text" :disabled="true">
+      <el-radio-group v-model="form.text">
         <el-radio label='text'>是</el-radio>
         <el-radio label=''>否</el-radio>
       </el-radio-group>
@@ -241,6 +250,8 @@ export default {
   data() {
     return {
       form:{
+        isFolder: '',
+
         input: '',
         inputstring: '',
 
@@ -258,7 +269,7 @@ export default {
 
         overwrite: '',
 
-        text: 'text',
+        text: '',
         textstring: '',
 
         urlencoded: '',
@@ -316,6 +327,8 @@ export default {
       console.log('submit!')
       request
           .post('/reportingOptions', {
+            isFolder: this.form.isFolder,
+
             input: this.form.input,
             inputstring: this.form.inputstring,
 
