@@ -11,4 +11,6 @@ server:
 
 files:
   upload:
-    path: C:\Users\Windows\Documents\codes\SE3\2\sentistrength-backed-39\src\main\resources\files\
+    path: D:\files\upload
+  download:
+    path: D:\files\download

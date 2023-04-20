@@ -95,6 +95,14 @@
       <el-divider></el-divider>
     </el-form-item>
 
+    <el-form-item label="bText">
+      <el-radio-group v-model="form.bText">
+        <el-radio label='bText'>是</el-radio>
+        <el-radio label=''>否</el-radio>
+      </el-radio-group>
+      <el-divider></el-divider>
+    </el-form-item>
+
     <el-form-item label="optimise">
       <el-radio-group v-model="form.optimise">
         <el-radio label='optimise'>是</el-radio>
@@ -262,6 +270,8 @@ export default {
 
         cmd: '',
 
+        bText: '',
+
         optimise: '',
         optimisestring: '',
 
@@ -334,6 +344,8 @@ export default {
             stdin: this.form.stdin,
 
             cmd: this.form.cmd,
+
+            bText: this.form.bText,
 
             optimise: this.form.optimise,
             optimisestring: this.form.optimisestring,

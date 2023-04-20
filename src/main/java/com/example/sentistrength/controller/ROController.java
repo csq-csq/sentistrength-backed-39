@@ -13,8 +13,9 @@ public class ROController {
     @CrossOrigin
     @PostMapping(value = "/api/reportingOptions")
     @ResponseBody
-    public Result reportingOptions(@RequestBody ReportingOptions reportingOptions) {
+    public Result reportingOptions(@RequestBody String reportingOptions) {
         System.out.println(reportingOptions);
+
         return ResultFactory.buildSuccessResult("ReportingOptions");
     }
 }
