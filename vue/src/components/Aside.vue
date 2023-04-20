@@ -17,6 +17,10 @@
         <template slot="title"><i class="el-icon-loading"></i>Login</template>
       </el-menu-item>
 
+      <el-menu-item index="/file">
+        <template slot="title"><i class="el-icon-files"></i>File</template>
+      </el-menu-item>
+
       <!--
       <el-submenu index="2">
         <template slot="title"><i class="el-icon-menu"></i>导航二</template>

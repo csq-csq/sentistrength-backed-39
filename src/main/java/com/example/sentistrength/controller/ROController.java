@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 
-@Controller
+@RestController
 public class ROController {
     @CrossOrigin
     @PostMapping(value = "/api/reportingOptions")

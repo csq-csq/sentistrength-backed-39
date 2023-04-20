@@ -1,11 +1,16 @@
 package com.example.sentistrength.controller;
 
+import com.example.sentistrength.result.Result;
+import com.example.sentistrength.result.ResultFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @CrossOrigin
-@RequestMapping(value = "/")
 public class SentController {
+
+    @GetMapping(value = "/api")
+    public Result sent(){
+        return ResultFactory.buildSuccessResult("index");
+    }
 }
