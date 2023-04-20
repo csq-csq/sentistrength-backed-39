@@ -11,6 +11,6 @@ server:
 
 files:
   upload:
-    path: D:\files\upload
+    path: D:\files\upload\
   download:
-    path: D:\files\download
+    path: D:\files\download\
