@@ -5,8 +5,8 @@
         <template slot="title"><i class="el-icon-s-home"></i>主页</template>
       </el-menu-item>
 
-      <el-menu-item index="/sentimentAnalysisOptions">
-        <template slot="title"><i class="el-icon-setting"></i>Sentiment Analysis Options</template>
+      <el-menu-item index="/Options">
+        <template slot="title"><i class="el-icon-setting"></i>Options</template>
       </el-menu-item>
 
       <el-menu-item index="/SentiArgs">

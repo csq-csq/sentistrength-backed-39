@@ -54,7 +54,7 @@
     </el-form-item>
 
     <el-form-item label="text">
-      <el-radio-group v-model="form.text">
+      <el-radio-group v-model="form.text" :disabled="true">
         <el-radio label='text'>是</el-radio>
         <el-radio label=''>否</el-radio>
       </el-radio-group>
@@ -250,7 +250,7 @@ export default {
 
         overwrite: '',
 
-        text: '',
+        text: 'text',
         textstring: '',
 
         urlencoded: '',

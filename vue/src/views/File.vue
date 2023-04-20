@@ -79,7 +79,7 @@
     <el-upload
         class="upload-demo"
         ref="upload"
-        action="/api/file/upload"
+        action="/api/file/upload2"
         :on-preview="handlePreview"
         :on-remove="handleRemove"
         :file-list="fileList"

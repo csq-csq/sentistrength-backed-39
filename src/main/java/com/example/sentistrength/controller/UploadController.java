@@ -17,7 +17,7 @@ public class UploadController {
     @Value("${files.upload.path}")
     private String fileUploadPath;
 
-    @PostMapping("/upload")
+    @PostMapping("/upload1")
     public Result upload(@RequestParam MultipartFile[] files){
         for (MultipartFile file : files) {
             String filename = file.getOriginalFilename();
@@ -37,6 +37,28 @@ public class UploadController {
                 e.printStackTrace();
             }
         }
+        return ResultFactory.buildSuccessResult("upload success");
+    }
+
+    @PostMapping("/upload2")
+    public Result upload(@RequestParam MultipartFile file){
+        String filename = file.getOriginalFilename();
+        System.out.println(filename);
+        String type = filename.substring(filename.lastIndexOf(".") + 1);
+        String date = String.valueOf(System.currentTimeMillis());
+
+        File upLoadParentFile = new File(fileUploadPath);
+        if (!upLoadParentFile.exists()) {
+            upLoadParentFile.mkdirs();
+        }
+
+        File uploadFile = new File(fileUploadPath + filename.substring(0, filename.lastIndexOf(".")) + date + "." + type);
+        try {
+            file.transferTo(uploadFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return ResultFactory.buildSuccessResult("upload success");
     }
 }
