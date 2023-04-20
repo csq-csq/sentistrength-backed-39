@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 
@@ -52,6 +53,16 @@ public class FileController {
         //调用service中的业务方法
         FileVO fileVO = fileService.upload(file);
         return ResultFactory.buildSuccessResult(fileVO);
+    }
+
+    @GetMapping("/download")
+    public Object downloadFile(HttpServletResponse response, String filePath) throws IOException {
+        // 清空输出流
+        response.reset();
+        response.setContentType("application/x-download;charset=UTF-8");
+        response.setHeader("Content-Disposition", "attachment;filename="+ new String(filePath.getBytes("utf-8"), "utf-8"));
+        fileService.download(response.getOutputStream(),filePath);
+        return null;
     }
 
 }

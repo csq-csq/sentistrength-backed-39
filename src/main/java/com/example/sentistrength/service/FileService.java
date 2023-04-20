@@ -9,4 +9,6 @@ import java.io.OutputStream;
 public interface FileService {
     //文件上传
     public FileVO upload(MultipartFile file);
+
+    public Object download(OutputStream os,String filePath) throws IOException ;
 }
