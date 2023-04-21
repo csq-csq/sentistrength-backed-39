@@ -12,7 +12,7 @@ import java.util.Map;
 public class AnalysisController {
     private AnalysisService analysisService;
 
-    private ArrayList<String> args;
+    private ArrayList<String> args = new ArrayList<>();
 
     @Autowired
     private AnalysisController(AnalysisService analysisService){
