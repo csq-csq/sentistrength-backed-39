@@ -17,6 +17,7 @@ public class AnalysisController {
     @Autowired
     private AnalysisController(AnalysisService analysisService){
         this.analysisService = analysisService;
+        args = new ArrayList<>();
     }
     @PostMapping("/submit")
     public String initialiseAndRun(){
