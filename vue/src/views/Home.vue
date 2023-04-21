@@ -6,6 +6,10 @@
 
       <el-button type="primary" @click="onSubmit">Quick Test</el-button>
     </el-form>
+    <el-divider></el-divider>
+    <div>
+      <el-button type="primary" @click="Submit">Submit</el-button>
+    </div>
   </div>
 </template>
 
@@ -27,6 +31,18 @@ export default {
       request
           .post('/quickTest', {
             text: this.form.text,
+          })
+          .then(Response => {
+            console.log(Response.code)
+            console.log(Response.message)
+            console.log(Response.result)
+          })
+    },
+    Submit() {
+      // console.log('submit!');
+      request
+          .post('/submit', {
+            1:1,
           })
           .then(Response => {
             console.log(Response.code)

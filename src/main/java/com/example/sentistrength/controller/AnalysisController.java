@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/analysis")
+@RequestMapping("/api")
 public class AnalysisController {
     private AnalysisService analysisService;
 
@@ -25,14 +25,14 @@ public class AnalysisController {
         args.clear();
         return url;
     }
-    @PostMapping("/submit/options")
+    @PostMapping("/options")
     public void getOptions(@RequestBody Map<String, String> options){
         for(String s : options.values()){
             args.add(s);
         }
     }
 
-    @PostMapping("/submit/sentiArgs")
+    @PostMapping("/sentiArgs")
     public void getSentiArgs(@RequestBody Map<String, String> sentiArgs){
         for(String s : sentiArgs.values()){
             args.add(s);
