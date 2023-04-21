@@ -13,16 +13,8 @@
         <template slot="title"><i class="el-icon-setting"></i>SentiArgs</template>
       </el-menu-item>
 
-      <el-menu-item index="/login">
-        <template slot="title"><i class="el-icon-loading"></i>Login</template>
-      </el-menu-item>
-
       <el-menu-item index="/file">
         <template slot="title"><i class="el-icon-files"></i>File</template>
-      </el-menu-item>
-
-      <el-menu-item index="/output">
-        <template slot="title"><i class="el-icon-files"></i>Output</template>
       </el-menu-item>
 
       <!--

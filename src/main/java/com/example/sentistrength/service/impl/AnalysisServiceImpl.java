@@ -22,6 +22,7 @@ import java.util.zip.ZipOutputStream;
 public class AnalysisServiceImpl implements AnalysisService {
 
     private SentiStrength sentiStrength;
+    @Autowired
     private PathService pathService;
 
     private String url;
@@ -35,10 +36,14 @@ public class AnalysisServiceImpl implements AnalysisService {
     }
 
     public void initialiseAndRun(String[] args){
-        pathService.deleteFiles(pathService.getDownloadPath());
+        for(int i=0;i<args.length;i++){
+            System.out.println(args[i]);
+        }
+        System.out.println();
         File outputFile = new File(pathService.getDownloadPath());
         sentiStrength.initialiseAndRun(args);
         url = pathService.getResultPath() + "result.zip";
+        new File(url).delete();
         File[] fs = outputFile.listFiles();
         compress(fs, url, false);
     }
@@ -76,6 +81,7 @@ public class AnalysisServiceImpl implements AnalysisService {
                 while ((len = fis.read(buf)) > 0) {
                     zos.write(buf, 0, len);
                 }
+                fis.close();
                 //System.out.println(zipFile.listFiles()[0]);
                 zos.closeEntry();
             }

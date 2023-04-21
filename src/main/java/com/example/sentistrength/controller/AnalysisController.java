@@ -1,5 +1,7 @@
 package com.example.sentistrength.controller;
 
+import com.example.sentistrength.result.Result;
+import com.example.sentistrength.result.ResultFactory;
 import com.example.sentistrength.service.AnalysisService;
 import com.example.sentistrength.service.PathService;
 import com.example.sentistrength.service.impl.PathServiceImpl;
@@ -12,7 +14,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api")
 public class AnalysisController {
+    @Autowired
     private AnalysisService analysisService;
+    @Autowired
     private PathService pathService;
 
     private ArrayList<String> args = new ArrayList<>();
@@ -25,15 +29,16 @@ public class AnalysisController {
     }
 
     @PostMapping("/submit")
-    public String initialiseAndRun(){
+    public Result initialiseAndRun(){
         args.add("uploader");
         args.add(pathService.getUploadPath());
         args.add("downloader");
         args.add(pathService.getDownloadPath());
+        pathService.deleteFiles(pathService.getDownloadPath());
         analysisService.initialiseAndRun((String[]) args.toArray(new String[args.size()]));
         String url = analysisService.getUrl();
         args.clear();
-        return url;
+        return ResultFactory.buildSuccessResult(url);
     }
     @PostMapping("/options")
     public void getOptions(@RequestBody Map<String, String> options){

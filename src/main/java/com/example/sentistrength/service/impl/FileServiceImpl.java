@@ -25,9 +25,6 @@ public class FileServiceImpl implements FileService {
         String date = String.valueOf(System.currentTimeMillis());
 
         File upLoadParentFile = new File(pathService.getUploadPath());
-        if (!upLoadParentFile.exists()) {
-            upLoadParentFile.mkdirs();
-        }
         upLoadParentFile.delete();
         upLoadParentFile.mkdirs();
 

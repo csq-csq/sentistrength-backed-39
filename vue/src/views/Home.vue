@@ -1,11 +1,11 @@
 <template>
   <div>
     <h1>sentistrength主页</h1>
-    <el-form ref="form" :model="form" label-width="80px">
-      <el-input v-model="form.text" placeholder="please enter some text"></el-input>
+<!--    <el-form ref="form" :model="form" label-width="80px">-->
+<!--      <el-input v-model="form.text" placeholder="please enter some text"></el-input>-->
 
-      <el-button type="primary" @click="onSubmit">Quick Test</el-button>
-    </el-form>
+<!--      <el-button type="primary" @click="onSubmit">Quick Test</el-button>-->
+<!--    </el-form>-->
     <el-divider></el-divider>
     <div>
       <el-button type="primary" @click="Submit">开始运行</el-button>
