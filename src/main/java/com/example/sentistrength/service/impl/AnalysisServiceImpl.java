@@ -5,6 +5,7 @@ import com.example.sentistrength.service.AnalysisService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import uk.ac.wlv.sentistrength.SentiStrength;
@@ -22,30 +23,23 @@ import java.util.zip.ZipOutputStream;
 
 @Service
 public class AnalysisServiceImpl implements AnalysisService {
-    private String url;
 
     private SentiStrength sentiStrength;
+    private PathServiceImpl pathServiceImpl;
 
-    private String downloader;
-    private String uploader;
+    private String url;
+
 
     @Autowired
     private AnalysisServiceImpl(){
         sentiStrength = new SentiStrength();
-        downloader = "D:\\sentiFiles\\downloader";
-        uploader = "D:\\sentiFiles\\uploader";
+        pathServiceImpl = new PathServiceImpl();
     }
 
     public void initialiseAndRun(String[] args){
-        for(int i=0;i<args.length;i++){
-            System.out.println(args[i]);
-        }
-        System.out.println();
-
-        url = "D:\\files\\result.zip";
         sentiStrength.initialiseAndRun(args);
-        String outputPath = "D://files/downloader";
-        File outputFile = new File(outputPath);
+        File outputFile = new File(pathServiceImpl.getDownloadPath());
+        url = pathServiceImpl.getResultPath() + "result.zip";
         File[] fs = outputFile.listFiles();
         compress(fs, url, false);
     }
@@ -89,9 +83,9 @@ public class AnalysisServiceImpl implements AnalysisService {
             }
             //System.out.println(zipFile.listFiles()[0]);
             zos.close();
-//            if (!zipFile.exists()) {
-//                zipFile.createNewFile();
-//            }
+            if (!zipFile.exists()) {
+                zipFile.createNewFile();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

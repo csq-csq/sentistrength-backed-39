@@ -11,6 +11,11 @@ server:
 
 files:
   upload:
-    path: D:\files\uploader\
+    windowsPath: D:\sentiFiles\uploader\
+    linuxPath: /home/sentiFiles/uploader/
   download:
-    path: D:\files\downloader\
+    windowsPath: D:\sentiFiles\downloader\
+    linuxPath: /home/sentiFiles/downloader/
+  result:
+    windowsPath: D:\sentiFiles
+    linuxPath: /home/sentiFiles
