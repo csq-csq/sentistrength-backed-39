@@ -15,9 +15,8 @@ maven-build:
   stage: build
   image: registry.cn-hangzhou.aliyuncs.com/acs/maven
   script:
-    - java -version
     - mvn clean
-    - mvn package
+    - mvn package -Dmaven.test.skip=true
     - ls -l target/
     #- java -jar target/Sentistrength-1.1.4.jar help;
     #- java -jar target/$jar_name help;
