@@ -11,4 +11,6 @@ public interface FileService {
     public FileVO upload(MultipartFile file);
 
     public Object download(OutputStream os,String filePath) throws IOException ;
+
+    public void deleteAllUpload();
 }

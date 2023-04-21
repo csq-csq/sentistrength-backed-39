@@ -8,13 +8,18 @@
     </el-form>
     <el-divider></el-divider>
     <div>
-      <el-button type="primary" @click="Submit">Submit</el-button>
+      <el-button type="primary" @click="Submit">开始运行</el-button>
+    </div>
+    <el-divider></el-divider>
+    <div>
+      <el-button type="primary" @click="downloadFile">下载结果</el-button>
     </div>
   </div>
 </template>
 
 <script>
 import request from "@/utils/request";
+import {download} from "@/utils/download";
 
 export default {
   name: "Home",
@@ -49,6 +54,9 @@ export default {
             console.log(Response.message)
             console.log(Response.result)
           })
+    },
+    downloadFile(){
+      download("Result.zip")
     },
   }
 }

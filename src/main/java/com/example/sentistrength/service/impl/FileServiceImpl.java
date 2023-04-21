@@ -1,13 +1,11 @@
 package com.example.sentistrength.service.impl;
 
 import com.example.sentistrength.entity.vo.FileVO;
-import com.example.sentistrength.result.Result;
-import com.example.sentistrength.result.ResultFactory;
 import com.example.sentistrength.service.FileService;
+import com.example.sentistrength.service.PathService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
@@ -15,11 +13,9 @@ import java.io.*;
 @Service
 public class FileServiceImpl implements FileService {
 
-    @Value("${files.upload.path}")
-    private String fileUploadPath;
+    @Autowired
+    PathService pathService;
 
-    @Value("${files.download.path}")
-    private String fileDownloadPath;
 
     @Override
     public FileVO upload(MultipartFile file){
@@ -28,25 +24,27 @@ public class FileServiceImpl implements FileService {
         String type = filename.substring(filename.lastIndexOf(".") + 1);
         String date = String.valueOf(System.currentTimeMillis());
 
-        File upLoadParentFile = new File(fileUploadPath);
+        File upLoadParentFile = new File(pathService.getUploadPath());
         if (!upLoadParentFile.exists()) {
             upLoadParentFile.mkdirs();
         }
+        upLoadParentFile.delete();
+        upLoadParentFile.mkdirs();
 
-        File uploadFile = new File(fileUploadPath + filename.substring(0, filename.lastIndexOf("."))+ "." + type);
+        File uploadFile = new File(pathService.getUploadPath() + filename.substring(0, filename.lastIndexOf("."))+ "." + type);
         try {
             file.transferTo(uploadFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return new FileVO(fileUploadPath,filename);
+        return new FileVO(pathService.getUploadPath(),filename);
     }
 
     @Override
     public Object download(OutputStream os, String filePath) throws IOException {
         //下载文件的路径
-        String downPath = fileDownloadPath+filePath;
+        String downPath = pathService.getResultPath()+filePath;
         //读取目标文件
         File f = new File(downPath);
         //创建输入流
@@ -63,6 +61,11 @@ public class FileServiceImpl implements FileService {
         is.close();
         os.close();
         return null;
+    }
+
+    @Override
+    public void deleteAllUpload(){
+        pathService.deleteFiles(pathService.getUploadPath());
     }
 
 }
