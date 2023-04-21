@@ -56,7 +56,7 @@ export default {
           })
     },
     downloadFile(){
-      download("Result.zip")
+      download("result.zip")
     },
   }
 }
