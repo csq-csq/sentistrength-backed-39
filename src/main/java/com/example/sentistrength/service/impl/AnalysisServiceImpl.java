@@ -4,6 +4,7 @@ import com.example.sentistrength.enums.SentiStrengthManager;
 import com.example.sentistrength.service.AnalysisService;
 
 
+import com.example.sentistrength.service.PathService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -25,22 +26,22 @@ import java.util.zip.ZipOutputStream;
 public class AnalysisServiceImpl implements AnalysisService {
 
     private SentiStrength sentiStrength;
-    private PathServiceImpl pathServiceImpl;
+    private PathService pathService;
 
     private String url;
 
 
     @Autowired
-    private AnalysisServiceImpl(){
+    private AnalysisServiceImpl(PathService pathService){
         sentiStrength = new SentiStrength();
-        pathServiceImpl = new PathServiceImpl();
+        this.pathService = pathService;
     }
 
     public void initialiseAndRun(String[] args){
-        File outputFile = new File(pathServiceImpl.getDownloadPath());
+        File outputFile = new File(pathService.getDownloadPath());
         sentiStrength.initialiseAndRun(args);
 
-        url = pathServiceImpl.getResultPath() + "result.zip";
+        url = pathService.getResultPath() + "result.zip";
         File[] fs = outputFile.listFiles();
         compress(fs, url, false);
     }
