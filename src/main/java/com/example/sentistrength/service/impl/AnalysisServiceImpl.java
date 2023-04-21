@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -31,6 +32,7 @@ public class AnalysisServiceImpl implements AnalysisService {
     private String url;
 
 
+
     @Autowired
     private AnalysisServiceImpl(PathService pathService){
         sentiStrength = new SentiStrength();
@@ -38,10 +40,11 @@ public class AnalysisServiceImpl implements AnalysisService {
     }
 
     public void initialiseAndRun(String[] args){
+        pathService.deleteFiles(pathService.getDownloadPath());
         File outputFile = new File(pathService.getDownloadPath());
         sentiStrength.initialiseAndRun(args);
-
-        url = pathService.getResultPath() + "result.zip";
+        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        url = pathService.getResultPath() + "result" + "_" + ts.getTime() + ".zip";
         File[] fs = outputFile.listFiles();
         compress(fs, url, false);
     }

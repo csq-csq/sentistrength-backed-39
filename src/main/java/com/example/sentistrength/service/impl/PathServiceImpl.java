@@ -67,4 +67,13 @@ public class PathServiceImpl implements PathService {
             return linuxResultPath;
         }
     }
+
+    public void deleteFiles(String path){
+        File file = new File(path);
+        File[] fs = file.listFiles();
+        for(File f : fs){
+            f.delete();
+        }
+    }
+
 }
