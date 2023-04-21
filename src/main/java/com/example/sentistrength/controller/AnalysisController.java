@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -19,17 +20,27 @@ public class AnalysisController {
     @Autowired
     private PathService pathService;
 
-    private ArrayList<String> args = new ArrayList<>();
+    private ArrayList<String> args;
+    private ArrayList<String> optionsArgs;
+    private ArrayList<String> sentiStrengthArgs;
 
     @Autowired
     private AnalysisController(AnalysisService analysisService, PathService pathService){
         this.analysisService = analysisService;
         this.pathService = pathService;
         args = new ArrayList<>();
+        sentiStrengthArgs = new ArrayList<>();
+        optionsArgs = new ArrayList<>();
     }
 
     @PostMapping("/submit")
     public Result initialiseAndRun(){
+        for(String s : sentiStrengthArgs){
+            args.add(s);
+        }
+        for(String s : optionsArgs){
+            args.add(s);
+        }
         args.add("uploader");
         args.add(pathService.getUploadPath());
         args.add("downloader");
@@ -42,18 +53,20 @@ public class AnalysisController {
     }
     @PostMapping("/options")
     public void getOptions(@RequestBody Map<String, String> options){
+        optionsArgs.clear();
         for(String s : options.values()){
             if(s != null && s.length() != 0){
-                args.add(s);
+                optionsArgs.add(s);
             }
         }
     }
 
     @PostMapping("/sentiArgs")
     public void getSentiArgs(@RequestBody Map<String, String> sentiArgs){
+        sentiArgs.clear();
         for(String s : sentiArgs.values()){
             if(s != null && s.length() != 0) {
-                args.add(s);
+                sentiStrengthArgs.add(s);
             }
         }
     }
