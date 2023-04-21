@@ -15,6 +15,7 @@ maven-build:
   stage: build
   image: registry.cn-hangzhou.aliyuncs.com/acs/maven
   script:
+    - java -version
     - mvn clean
     - mvn package
     - ls -l target/
