@@ -63,7 +63,7 @@ public class AnalysisController {
 
     @PostMapping("/sentiArgs")
     public void getSentiArgs(@RequestBody Map<String, String> sentiArgs){
-        sentiArgs.clear();
+        sentiStrengthArgs.clear();
         for(String s : sentiArgs.values()){
             if(s != null && s.length() != 0) {
                 sentiStrengthArgs.add(s);
