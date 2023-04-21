@@ -14,12 +14,7 @@ import uk.ac.wlv.sentistrength.SentiStrength;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -35,7 +30,7 @@ public class AnalysisServiceImpl implements AnalysisService {
 
     @Autowired
     private AnalysisServiceImpl(PathService pathService){
-        sentiStrength = new SentiStrength();
+        sentiStrength = SentiStrengthManager.getInstance();
         this.pathService = pathService;
     }
 
@@ -43,7 +38,6 @@ public class AnalysisServiceImpl implements AnalysisService {
         pathService.deleteFiles(pathService.getDownloadPath());
         File outputFile = new File(pathService.getDownloadPath());
         sentiStrength.initialiseAndRun(args);
-        Timestamp ts = new Timestamp(System.currentTimeMillis());
         url = pathService.getResultPath() + "result.zip";
         File[] fs = outputFile.listFiles();
         compress(fs, url, false);
@@ -72,13 +66,8 @@ public class AnalysisServiceImpl implements AnalysisService {
                 if (sourceFile == null || !sourceFile.exists()) {
                     continue;
                 }
-                Scanner sc = new Scanner(sourceFile);
-                while(sc.hasNext()){
-                    System.out.println(sc.nextLine());
-                }
                 FileInputStream fis = new FileInputStream(sourceFile);
                 if (keepDirStructure != null && keepDirStructure) {
-                    System.out.println(relativePath);
                     zos.putNextEntry(new ZipEntry(relativePath));
                 } else {
                     zos.putNextEntry(new ZipEntry(relativeName));
