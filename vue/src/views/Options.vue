@@ -555,7 +555,7 @@ export default {
     onSubmit() {
       console.log('submit!')
       request
-          .post('/reportingOptions', {
+          .post('/options', {
             sentidata: this.form.sentidata,
             sentidatastring: this.form.sentidatastring,
 

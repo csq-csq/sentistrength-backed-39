@@ -326,7 +326,7 @@ export default {
     onSubmit() {
       console.log('submit!')
       request
-          .post('/reportingOptions', {
+          .post('/sentiArgs', {
             isFolder: this.form.isFolder,
 
             input: this.form.input,

@@ -31,6 +31,11 @@ public class AnalysisServiceImpl implements AnalysisService {
     }
 
     public void initialiseAndRun(String[] args){
+        for(int i=0;i<args.length;i++){
+            System.out.println(args[i]);
+        }
+        System.out.println();
+
         url = "D:\\files\\result.zip";
         sentiStrength.initialiseAndRun(args);
         String outputPath = "D://files/downloader";
