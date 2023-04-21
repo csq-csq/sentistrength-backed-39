@@ -30,7 +30,7 @@ public class AnalysisController {
     @PostMapping("/options")
     public void getOptions(@RequestBody Map<String, String> options){
         for(String s : options.values()){
-            if(s != null && s.length() == 0){
+            if(s != null && s.length() != 0){
                 args.add(s);
             }
         }
@@ -39,7 +39,7 @@ public class AnalysisController {
     @PostMapping("/sentiArgs")
     public void getSentiArgs(@RequestBody Map<String, String> sentiArgs){
         for(String s : sentiArgs.values()){
-            if(s != null && s.length() == 0) {
+            if(s != null && s.length() != 0) {
                 args.add(s);
             }
         }
