@@ -17,5 +17,5 @@ files:
     windowsPath: D:\sentiFiles\downloader\
     linuxPath: /home/sentiFiles/downloader/
   result:
-    windowsPath: D:\sentiFiles
-    linuxPath: /home/sentiFiles
+    windowsPath: D:\sentiFiles\
+    linuxPath: /home/sentiFiles/

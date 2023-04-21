@@ -37,8 +37,9 @@ public class AnalysisServiceImpl implements AnalysisService {
     }
 
     public void initialiseAndRun(String[] args){
-        sentiStrength.initialiseAndRun(args);
         File outputFile = new File(pathServiceImpl.getDownloadPath());
+        sentiStrength.initialiseAndRun(args);
+
         url = pathServiceImpl.getResultPath() + "result.zip";
         File[] fs = outputFile.listFiles();
         compress(fs, url, false);
@@ -52,6 +53,9 @@ public class AnalysisServiceImpl implements AnalysisService {
         byte[] buf = new byte[1024];
         File zipFile = new File(zipFilePath);
         try {
+            if (!zipFile.exists()) {
+                zipFile.createNewFile();
+            }
             ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(zipFile));
             for (File f: fs) {
                 String relativePath = f.getPath();
@@ -83,9 +87,9 @@ public class AnalysisServiceImpl implements AnalysisService {
             }
             //System.out.println(zipFile.listFiles()[0]);
             zos.close();
-            if (!zipFile.exists()) {
-                zipFile.createNewFile();
-            }
+//            if (!zipFile.exists()) {
+//                zipFile.createNewFile();
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

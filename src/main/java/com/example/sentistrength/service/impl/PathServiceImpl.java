@@ -4,6 +4,8 @@ import com.example.sentistrength.service.PathService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+
 @Service
 public class PathServiceImpl implements PathService {
     @Value("${files.upload.windowsPath}")
@@ -24,23 +26,35 @@ public class PathServiceImpl implements PathService {
     @Value("${files.result.linuxPath}")
     private String linuxResultPath;
 
+
     private String getOsName(){
         return System.getProperty("os.name");
     }
+
+    private void makeDir(String path){
+        File f = new File(path);
+        if(!f.exists()){
+            f.mkdir();
+        }
+    }
     public String getUploadPath(){
         if(getOsName().charAt(0) == 'W'){
+            makeDir(windowsUploadPath);
             return windowsUploadPath;
         }
         else{
+            makeDir(linuxUploadPath);
             return linuxUploadPath;
         }
     }
 
     public String getDownloadPath(){
         if(getOsName().charAt(0) == 'W'){
+            makeDir(windowsDownloadPath);
             return windowsDownloadPath;
         }
         else {
+            makeDir(linuxDownloadPath);
             return linuxDownloadPath;
         }
     }
