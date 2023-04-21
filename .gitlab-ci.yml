@@ -10,7 +10,6 @@ stages:
   - upload
   - deploy
 
-
 # 使用 maven 镜像打包项目
 maven-build:
   stage: build
