@@ -4,25 +4,38 @@ import com.example.sentistrength.service.AnalysisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/analysis")
 public class AnalysisController {
-    AnalysisService analysisService;
+    private AnalysisService analysisService;
+
+    private ArrayList<String> args;
 
     @Autowired
     private AnalysisController(AnalysisService analysisService){
         this.analysisService = analysisService;
     }
     @PostMapping("/submit")
-    public String initialiseAndRun(@RequestBody Map<String, String> options){
-        String[] args = new String[options.size()];
-        for(String s: options.values()){
-            args[args.length] = s;
-        }
-        analysisService.initialiseAndRun(args);
+    public String initialiseAndRun(){
+        analysisService.initialiseAndRun((String[]) args.toArray(new String[args.size()]));
         String url = analysisService.getUrl();
+        args.clear();
         return url;
+    }
+    @PostMapping("/submit/options")
+    public void getOptions(@RequestBody Map<String, String> options){
+        for(String s : options.values()){
+            args.add(s);
+        }
+    }
+
+    @PostMapping("/submit/sentiArgs")
+    public void getSentiArgs(@RequestBody Map<String, String> sentiArgs){
+        for(String s : sentiArgs.values()){
+            args.add(s);
+        }
     }
 }
