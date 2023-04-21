@@ -25,9 +25,15 @@ public class AnalysisServiceImpl implements AnalysisService {
     private String url;
 
     private SentiStrength sentiStrength;
+
+    private String downloader;
+    private String uploader;
+
     @Autowired
     private AnalysisServiceImpl(){
         sentiStrength = new SentiStrength();
+        downloader = "D:\\sentiFiles\\downloader";
+        uploader = "D:\\sentiFiles\\uploader";
     }
 
     public void initialiseAndRun(String[] args){

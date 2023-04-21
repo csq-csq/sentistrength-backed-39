@@ -19,6 +19,7 @@ public class AnalysisController {
         this.analysisService = analysisService;
         args = new ArrayList<>();
     }
+
     @PostMapping("/submit")
     public String initialiseAndRun(){
         analysisService.initialiseAndRun((String[]) args.toArray(new String[args.size()]));
@@ -29,14 +30,18 @@ public class AnalysisController {
     @PostMapping("/options")
     public void getOptions(@RequestBody Map<String, String> options){
         for(String s : options.values()){
-            args.add(s);
+            if(s != null && s.length() == 0){
+                args.add(s);
+            }
         }
     }
 
     @PostMapping("/sentiArgs")
     public void getSentiArgs(@RequestBody Map<String, String> sentiArgs){
         for(String s : sentiArgs.values()){
-            args.add(s);
+            if(s != null && s.length() == 0) {
+                args.add(s);
+            }
         }
     }
 }
