@@ -44,7 +44,7 @@ public class AnalysisServiceImpl implements AnalysisService {
         File outputFile = new File(pathService.getDownloadPath());
         sentiStrength.initialiseAndRun(args);
         Timestamp ts = new Timestamp(System.currentTimeMillis());
-        url = pathService.getResultPath() + "result" + "_" + ts.getTime() + ".zip";
+        url = pathService.getResultPath() + "result.zip";
         File[] fs = outputFile.listFiles();
         compress(fs, url, false);
     }
@@ -56,6 +56,7 @@ public class AnalysisServiceImpl implements AnalysisService {
     private static void compress(File[] fs, String zipFilePath, Boolean keepDirStructure) {
         byte[] buf = new byte[1024];
         File zipFile = new File(zipFilePath);
+        zipFile.delete();
         try {
             if (!zipFile.exists()) {
                 zipFile.createNewFile();
