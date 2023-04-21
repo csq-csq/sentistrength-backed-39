@@ -30,9 +30,9 @@ public class AnalysisServiceImpl implements AnalysisService {
         sentiStrength = new SentiStrength();
     }
 
-    public void initialiseAndRun(String[] options){
+    public void initialiseAndRun(String[] args){
         url = "D:\\files\\result.zip";
-        sentiStrength.initialiseAndRun(options);
+        sentiStrength.initialiseAndRun(args);
         String outputPath = "D://files/downloader";
         File outputFile = new File(outputPath);
         File[] fs = outputFile.listFiles();
