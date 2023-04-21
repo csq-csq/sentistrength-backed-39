@@ -90,10 +90,14 @@
       <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
       <div slot="tip" class="el-upload__tip">只能上传文件，且不超过50Mb</div>
     </el-upload>
+    <el-divider></el-divider>
+    <el-button type="primary" @click="deleteUploadFiles">删除所有已上传文件</el-button>
   </div>
 </template>
 
 <script>
+import request from "@/utils/request";
+
 export default {
   data() {
     return {
@@ -109,6 +113,12 @@ export default {
     },
     handlePreview(file) {
       console.log(file);
+    },
+    deleteUploadFiles(){
+      request
+          .post('/file/deleteAllUpload', {
+            1:1,
+          })
     }
   }
 }

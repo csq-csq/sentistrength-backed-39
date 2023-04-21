@@ -26,9 +26,9 @@ public class AnalysisController {
 
     @PostMapping("/submit")
     public String initialiseAndRun(){
-        args.add("upload");
+        args.add("uploader");
         args.add(pathService.getUploadPath());
-        args.add("download");
+        args.add("downloader");
         args.add(pathService.getDownloadPath());
         analysisService.initialiseAndRun((String[]) args.toArray(new String[args.size()]));
         String url = analysisService.getUrl();

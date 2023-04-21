@@ -5,12 +5,10 @@ import com.example.sentistrength.result.Result;
 import com.example.sentistrength.result.ResultFactory;
 import com.example.sentistrength.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.IOException;
 
 @CrossOrigin
@@ -63,6 +61,12 @@ public class FileController {
         response.setHeader("Content-Disposition", "attachment;filename="+ new String(filePath.getBytes("utf-8"), "utf-8"));
         fileService.download(response.getOutputStream(),filePath);
         return null;
+    }
+
+    @PostMapping("/deleteAllUpload")
+    public Result deleteAllUpload(MultipartFile file){
+        fileService.deleteAllUpload();
+        return ResultFactory.buildSuccessResult("DeleteSuccess");
     }
 
 }
