@@ -38,5 +38,5 @@ deploy-job:
   image: ictu/sshpass
   script:
     - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip 'if [ -f $upload_path/run.pid ]; then kill $(cat $upload_path/run.pid) && rm $upload_path/run.pid; fi'
-    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "nohup java -jar $upload_path/$jar_name   > $upload_path/run.pid"
+    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "nohup java -jar $upload_path/$jar_name  & > $upload_path/run.pid"
 
