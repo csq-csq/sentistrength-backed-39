@@ -18,28 +18,28 @@ maven-build:
     - mvn clean
     - mvn package -Dmaven.test.skip=true
     - ls -l target/
-    #- java -jar target/Sentistrength-1.1.4.jar help;
-    #- java -jar target/$jar_name help;
-  #  cache:
-  #    key: m2-repo
-  #    paths:
-  #      - .m2/repository
   artifacts:
     paths:
       - target/$jar_name
 
 
-# 上传生成的 jar 包到你的应用服务器，这里使用 ictu/sshpass 这个镜像，是为了使用 sshpass 命令
+# 上传生成的 jar 包到你的应用服务器
 upload-jar:
   stage: upload
   image: ictu/sshpass
   script:
     - ls -l
     - ls -l target/
-    - sshpass -p $password scp target/$jar_name root@$server_ip:$upload_path/$jar_name
+    - scp target/$jar_name root@$server_ip:$upload_path/$jar_name
 
 deploy-job:
   stage: deploy
   image: ictu/sshpass
   script:
-    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "cd $upload_path && nohup java -jar $jar_name >/dev/null 2>&1 &"
+    - ssh root@$server_ip "cd $upload_path && nohup java -jar $jar_name >/dev/null 2>&1 &"
+
+
+
+
+
+
