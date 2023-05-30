@@ -42,5 +42,6 @@ deploy-job:
   stage: deploy
   image: ictu/sshpass
   script:
-    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "pkill java; cd $upload_path && nohup java -jar $jar_name >/dev/null 2>&1 &"
+    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "pkill java;cd $upload_path && screen -dm java -jar $jar_name"
+
     - echo "Deployment complete"
