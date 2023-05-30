@@ -16,6 +16,7 @@ public class ROController {
     public Result reportingOptions(@RequestBody String reportingOptions) {
         System.out.println(reportingOptions);
 
+
         return ResultFactory.buildSuccessResult("ReportingOptions");
     }
 }
