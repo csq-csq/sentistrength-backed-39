@@ -39,3 +39,7 @@ upload-jar:
     - sshpass -p $password scp target/$jar_name root@$server_ip:$upload_path/$jar_name
 
 deploy-job:
+  stage: deploy
+  image: ictu/sshpass
+  script:
+    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "cd $upload_path && nohup java -jar $jar_name >/dev/null 2>&1 &"
