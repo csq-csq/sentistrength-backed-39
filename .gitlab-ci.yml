@@ -38,6 +38,5 @@ deploy-job:
   image: ictu/sshpass
   script:
 
-    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip 'if [ -f $upload_path/run.pid ]; then kill $(cat $upload_path/run.pid) && rm $upload_path/run.pid; fi'
-    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip 'cd /home/SE3/sentiSpring|| exit 1'
-    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "nohup java -jar $jar_name  &"
+    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "if [ -f $upload_path/run.pid ]; then kill \\\$(cat $upload_path/run.pid) && rm $upload_path/run.pid; fi"
+    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "nohup java -jar $upload_path/$jar_name >/dev/null 2>&1 & echo -n \\$! > $upload_path/run.pid"
