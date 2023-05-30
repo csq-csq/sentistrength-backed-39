@@ -1,6 +1,6 @@
 variables:
   server_ip: 8.130.116.36
-  jar_name: sentistrength-0.0.6-SNAPSHOT.jar
+  jar_name: sentistrength-0.0.1-SNAPSHOT.jar
   upload_path: /home/SE3/sentiSpring
   password: 940926698xiAOL
 
@@ -20,9 +20,14 @@ maven-build:
     - ls -l target/
     #- java -jar target/Sentistrength-1.1.4.jar help;
     #- java -jar target/$jar_name help;
+  #  cache:
+  #    key: m2-repo
+  #    paths:
+  #      - .m2/repository
   artifacts:
     paths:
       - target/$jar_name
+
 
 # 上传生成的 jar 包到你的应用服务器，这里使用 ictu/sshpass 这个镜像，是为了使用 sshpass 命令
 upload-jar:
@@ -31,11 +36,6 @@ upload-jar:
   script:
     - ls -l
     - ls -l target/
-    - sshpass -p $password scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no target/$jar_name root@$server_ip:$upload_path/$jar_name
+    - sshpass -p $password scp target/$jar_name root@$server_ip:$upload_path/$jar_name
 
 deploy-job:
-  stage: deploy
-  image: ictu/sshpass
-  script:
-    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip “cd /home/SE3/sentiSpring"
-    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "nohup java -jar $jar_name >/dev/null 2>&1 &"
