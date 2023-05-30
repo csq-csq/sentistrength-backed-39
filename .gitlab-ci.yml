@@ -4,13 +4,11 @@ variables:
   upload_path: /home/SE3/sentiSpring
   password: 940926698xiAOL
 
-# 定义执行的各个阶段及顺序
 stages:
   - build
   - upload
   - deploy
 
-# 使用 maven 镜像打包项目
 maven-build:
   stage: build
   image: registry.cn-hangzhou.aliyuncs.com/acs/maven
@@ -18,18 +16,10 @@ maven-build:
     - mvn clean
     - mvn package -Dmaven.test.skip=true
     - ls -l target/
-    #- java -jar target/Sentistrength-1.1.4.jar help;
-    #- java -jar target/$jar_name help;
-  #  cache:
-  #    key: m2-repo
-  #    paths:
-  #      - .m2/repository
   artifacts:
     paths:
       - target/$jar_name
 
-
-# 上传生成的 jar 包到你的应用服务器，这里使用 ictu/sshpass 这个镜像，是为了使用 sshpass 命令
 upload-jar:
   stage: upload
   image: ictu/sshpass
@@ -42,4 +32,5 @@ deploy-job:
   stage: deploy
   image: ictu/sshpass
   script:
-    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "nohup java -jar $upload_path/$jar_name >/dev/null 2>&1 &"
+    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "if [ -f $upload_path/run.pid ]; then kill \$(cat $upload_path/run.pid) && rm $upload_path/run.pid; fi"
+    - sshpass -p $password ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$server_ip "nohup java -jar $upload_path/$jar_name >/dev/null 2>&1 & echo \$! > $upload_path/run.pid"
