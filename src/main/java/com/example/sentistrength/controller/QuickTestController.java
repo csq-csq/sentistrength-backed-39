@@ -16,5 +16,6 @@ public class QuickTestController {
     public Result reportingOptions(@RequestBody ShortText shortText) {
         System.out.println(shortText);
         return ResultFactory.buildSuccessResult("QuickTest");
+
     }
 }
