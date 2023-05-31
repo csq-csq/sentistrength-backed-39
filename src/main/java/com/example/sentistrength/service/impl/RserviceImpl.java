@@ -16,6 +16,7 @@ public class RserviceImpl implements Rservice {
 
         // Step 2: Build the command
         String rCommand = "/usr/bin/Rscript " + "sentistrength.R";
+        System.out.println(rCommand.split(" "));
         ProcessBuilder processBuilder = new ProcessBuilder(rCommand.split(" "));
 
         // Step 3: Run the command
