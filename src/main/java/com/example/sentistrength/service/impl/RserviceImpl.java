@@ -12,7 +12,7 @@ import java.io.InputStream;
 public class RserviceImpl implements Rservice {
     public void runRScript() throws IOException, InterruptedException {
         // Step 1: Export the R script
-        File rScript = exportResource("sentistrength.R");
+       // File rScript = exportResource("sentistrength.R");
 
         // Step 2: Build the command
         String rCommand = "/usr/bin/Rscript " + "sentistrength.R";
