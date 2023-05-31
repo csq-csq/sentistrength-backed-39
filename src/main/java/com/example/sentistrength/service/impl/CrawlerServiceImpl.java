@@ -42,20 +42,15 @@ public class CrawlerServiceImpl implements CrawlerService {
         ProcessBuilder processBuilder = new ProcessBuilder();
         StringBuffer sb = new StringBuffer();
         for(int i = 0; i < command.length; i++){
-            sb. append(command[i]);
+            sb.append(command[i]);
         }
         String s = sb.toString();
         System.out.println(s.toString());
         processBuilder.command(command);
-        processBuilder.redirectErrorStream(true);
-        Process p = processBuilder.start();
+/*        processBuilder.redirectErrorStream(true);
+        Process p = processBuilder.start();*/
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            System.out.println(line);
-        }
-        System.out.println("start cmd");
+
         Process process = processBuilder.start();
         System.out.println("finish cmd");
 
