@@ -37,9 +37,13 @@ public class CrawlerServiceImpl implements CrawlerService {
         System.out.println(dateString);
         dateString.substring(0,dateString.length()-1);
         System.out.println(dateString);
-        String[] command = {"python3 ",pythonScriptPath," --version_dates ",dateString};
 
-        ProcessBuilder processBuilder = new ProcessBuilder();
+        String[] command1 = {"python3",pythonScriptPath,"--version_dates"};
+        String[] data=dateString.split(" ");
+        String[] command=new String[command1.length+data.length];
+        System.arraycopy(command1, 0, command, 0, command1.length);
+        System.arraycopy(data, 0, command, command1.length, data.length);
+
         StringBuffer sb = new StringBuffer();
         for(int i = 0; i < command.length; i++){
             sb.append(command[i]);
@@ -47,6 +51,8 @@ public class CrawlerServiceImpl implements CrawlerService {
         String s = sb.toString();
         System.out.println(s.toString());
         System.out.println("finish cmd1");
+        ProcessBuilder processBuilder = new ProcessBuilder();
+
         processBuilder.command(command);
 
 /*        processBuilder.redirectErrorStream(true);
