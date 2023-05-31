@@ -11,7 +11,7 @@ public class PointService {
         String[] order1={"annotateCol","6","input","","overwrite"};
         String[] order2={"trinary","annotateCol","6","input","","overwrite"};
         String[] order3={"scale","annotateCol","6","input","","overwrite"};
-        String directoryPath = "";
+        String directoryPath = "/home/SE3/sentiSpring/result";
 
         // 创建 File 对象，代表该路径
         File directory = new File(directoryPath);
