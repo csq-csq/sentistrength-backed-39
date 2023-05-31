@@ -28,6 +28,7 @@ public class PythonScriptController {
 
     @PostMapping("/spider")
     public ResponseEntity<?> runPythonScript(@RequestBody DatesWrapper datesWrapper) {
+        System.out.println("access controller");
         List<List<String>> datesList = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
         DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -42,6 +43,7 @@ public class PythonScriptController {
             datesList.add(dateSubList);
         }
         try {
+            System.out.println("access service");
             crawlerService.runPythonScript(datesList);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
