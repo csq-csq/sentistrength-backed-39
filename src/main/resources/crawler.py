@@ -25,6 +25,7 @@ proxies = {
 
 # 设置结果文件路径
 data_root = "/home/SE3/sentiSpring/data/"
+check_data_root = "/home/SE3/sentiSpring/data"
 res_dirs = []
 
 
@@ -228,7 +229,7 @@ def write_issues_to_csv_files(issues, res_path):
 
 
 # 爬虫主方法
-def crawl_target(owner_name="apache", repo_name="echarts", version_date_list=None):
+def crawl_target(owner_name="apache", repo_name="echarts", version_date_list=None):    
     # 设置默认实参
     if version_date_list is None:
         version_date_list = [['2022-06-14', '2022-09-24'],
@@ -253,6 +254,9 @@ def crawl_target(owner_name="apache", repo_name="echarts", version_date_list=Non
     print(f"爬取耗时：{crawl_total_time}秒")
 
     # 将结果写入不同文件
+    # 删除存有之前数据的数据文件夹
+    if os.path.exists(data_root):
+        os.remove(data_root)
     # 检查数据存储的根目录是否存在
     if not os.path.exists(data_root):
         os.mkdir(data_root)

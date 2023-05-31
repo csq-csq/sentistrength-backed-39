@@ -16,7 +16,7 @@ public class PythonScriptController {
     @Autowired
     private CrawlerService crawlerService;
 
-    @PostMapping("/runPythonScript")
+    @PostMapping("/spider")
     public ResponseEntity<?> runPythonScript(@RequestBody DateListRequest request) {
         try {
             crawlerService.runPythonScript(request.getDateList());
