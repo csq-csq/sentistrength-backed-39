@@ -4,6 +4,7 @@ import requests
 import time
 import threading
 import argparse
+import shutil
 # 设置GitHub API的基本URL和相关参数
 base_url = 'https://api.github.com'
 owner = ''
@@ -255,8 +256,8 @@ def crawl_target(owner_name="apache", repo_name="echarts", version_date_list=Non
 
     # 将结果写入不同文件
     # 删除存有之前数据的数据文件夹
-    if os.path.exists(data_root):
-        os.remove(data_root)
+    if os.path.exists(check_data_root):
+        shutil.rmtree(check_data_root)
     # 检查数据存储的根目录是否存在
     if not os.path.exists(data_root):
         os.mkdir(data_root)
