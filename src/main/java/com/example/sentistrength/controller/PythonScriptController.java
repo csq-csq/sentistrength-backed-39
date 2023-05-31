@@ -3,6 +3,8 @@ package com.example.sentistrength.controller;
 import com.example.sentistrength.entity.DateListRequest;
 import com.example.sentistrength.entity.DateValue;
 import com.example.sentistrength.entity.DatesWrapper;
+import com.example.sentistrength.result.Result;
+import com.example.sentistrength.result.ResultFactory;
 import com.example.sentistrength.service.CrawlerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +29,7 @@ public class PythonScriptController {
 
 
     @PostMapping("/spider")
-    public ResponseEntity<?> runPythonScript(@RequestBody DatesWrapper datesWrapper) {
+    public Result runPythonScript(@RequestBody DatesWrapper datesWrapper) {
         System.out.println("access controller");
         List<List<String>> datesList = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
@@ -45,9 +47,9 @@ public class PythonScriptController {
         try {
             System.out.println("access service");
             crawlerService.runPythonScript(datesList);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResultFactory().buildSuccessResult("爬取成功");
         } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResultFactory().buildFailResult("爬取失败");
         }
     }
 }

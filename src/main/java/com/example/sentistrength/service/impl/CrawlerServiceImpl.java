@@ -34,7 +34,9 @@ public class CrawlerServiceImpl implements CrawlerService {
             dateStringBuilder.append(dates.get(0)).append(" ").append(dates.get(1)).append(" ");
         }
         String dateString = dateStringBuilder.toString();
-        //dateString.substring(0,dateString.length()-2);
+        System.out.println(dateString);
+        dateString.substring(0,dateString.length()-1);
+        System.out.println(dateString);
         String[] command = {"python3",pythonScriptPath,"--version_dates",dateString};
 
         ProcessBuilder processBuilder = new ProcessBuilder();
