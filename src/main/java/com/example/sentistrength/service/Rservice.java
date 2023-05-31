@@ -7,6 +7,6 @@ import java.io.IOException;
 
 @Service
 public interface Rservice {
-    public void runRScript() throws IOException;
+    public void runRScript() throws IOException, InterruptedException;
     public File exportResource(String resourceName) throws IOException;
 }

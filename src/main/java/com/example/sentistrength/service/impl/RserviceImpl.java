@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class RserviceImpl implements Rservice {
-    public void runRScript() throws IOException {
+    public void runRScript() throws IOException, InterruptedException {
         // Step 1: Export the R script
         File rScript = exportResource("/sentistrength.R");
 
@@ -19,7 +19,12 @@ public class RserviceImpl implements Rservice {
 
         // Step 3: Run the command
         Process process = processBuilder.start();
-
+        int exitCode = process.waitFor();
+        System.out.println("code:"+exitCode);
+ /*       ProcessBuilder processBuilder2=new ProcessBuilder("python3","transformtxt.py");
+        Process process1=processBuilder2.start();
+        int exitCode2=process1.waitFor();
+        System.out.println("code2:"+exitCode2);*/
         // Handle the outputs...
     }
 
