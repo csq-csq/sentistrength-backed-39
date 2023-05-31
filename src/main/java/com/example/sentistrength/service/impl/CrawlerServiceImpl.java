@@ -46,13 +46,15 @@ public class CrawlerServiceImpl implements CrawlerService {
         }
         String s = sb.toString();
         System.out.println(s.toString());
+        System.out.println("finish cmd1");
         processBuilder.command(command);
+
 /*        processBuilder.redirectErrorStream(true);
         Process p = processBuilder.start();*/
 
-
+        System.out.println("finish cmd2");
         Process process = processBuilder.start();
-        System.out.println("finish cmd");
+        System.out.println("finish cmd3");
 
 /*        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
         String line;
@@ -61,6 +63,7 @@ public class CrawlerServiceImpl implements CrawlerService {
         }*/
 
         int exitCode = process.waitFor();
+        System.out.println("finish cmd4");
         System.out.println("\nExited with error code : " + exitCode);
 
     }
