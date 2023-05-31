@@ -14,7 +14,10 @@ public class RscriptController {
     private Rservice rservice;
     @PostMapping("/pretreatment")
     public Result runRscript(@RequestBody String reportingOptions){
+
+        System.out.println("Rcontroller achieve");
         try {
+            System.out.println("Rservice achieve");
             rservice.runRScript();
             return new ResultFactory().buildSuccessResult("yes");
         }catch(Exception e){

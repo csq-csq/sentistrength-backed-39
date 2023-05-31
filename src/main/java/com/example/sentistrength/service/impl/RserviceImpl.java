@@ -12,7 +12,7 @@ import java.io.InputStream;
 public class RserviceImpl implements Rservice {
     public void runRScript() throws IOException, InterruptedException {
         // Step 1: Export the R script
-        File rScript = exportResource("/sentistrength.R");
+        File rScript = exportResource("sentistrength.R");
 
         // Step 2: Build the command
         String rCommand = "/usr/bin/Rscript " + rScript.getAbsolutePath();
@@ -20,6 +20,7 @@ public class RserviceImpl implements Rservice {
 
         // Step 3: Run the command
         Process process = processBuilder.start();
+        System.out.println("process start");
         int exitCode = process.waitFor();
         System.out.println("code:"+exitCode);
  /*       ProcessBuilder processBuilder2=new ProcessBuilder("python3","transformtxt.py");
@@ -30,11 +31,13 @@ public class RserviceImpl implements Rservice {
     }
 
     public File exportResource(String resourceName) throws IOException {
+
         InputStream resourceStream = getClass().getResourceAsStream(resourceName);
         File tempFile = File.createTempFile("temp", null);
         try (FileOutputStream out = new FileOutputStream(tempFile)) {
             IOUtils.copy(resourceStream, out);
         }
+        System.out.println("R get out");
         return tempFile;
     }
 
