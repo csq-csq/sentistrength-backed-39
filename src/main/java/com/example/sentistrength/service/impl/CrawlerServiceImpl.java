@@ -2,11 +2,13 @@ package com.example.sentistrength.service.impl;
 
 import com.example.sentistrength.service.CrawlerService;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.List;
-
+@Service
 public class CrawlerServiceImpl implements CrawlerService {
+
     public String exportPythonScript(String scriptName) throws IOException {
         ClassPathResource classPathResource = new ClassPathResource(scriptName);
         InputStream inputStream = classPathResource.getInputStream();
@@ -26,11 +28,11 @@ public class CrawlerServiceImpl implements CrawlerService {
         // 构造日期字符串
         StringBuilder dateStringBuilder = new StringBuilder();
         for (List<String> dates : dateList) {
-            dateStringBuilder.append(dates.get(0)).append(",").append(dates.get(1)).append(";");
+            dateStringBuilder.append(dates.get(0)).append(" ").append(dates.get(1)).append(" ");
         }
         String dateString = dateStringBuilder.toString();
-
-        String[] command = {"python", pythonScriptPath, "--dates", dateString};
+        //dateString.substring(0,dateString.length()-2);
+        String[] command = {"python", pythonScriptPath, "--version_dates", dateString};
 
         ProcessBuilder processBuilder = new ProcessBuilder();
         processBuilder.command(command);
