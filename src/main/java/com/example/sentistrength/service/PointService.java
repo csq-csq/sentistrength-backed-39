@@ -28,7 +28,9 @@ public class PointService {
                     // 打印文件的完整路径
                     System.out.println(file.getAbsolutePath());
                     order1[3]=file.getAbsolutePath();
+                    System.out.println(order1[3]);
                     order2[4]=file.getAbsolutePath();
+                    System.out.println(order2[4]);
                     order3[4]=file.getAbsolutePath();
                     SentiStrength.main(order1);
                     SentiStrength.main(order2);
