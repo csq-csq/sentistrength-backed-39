@@ -38,7 +38,12 @@ public class CrawlerServiceImpl implements CrawlerService {
         String[] command = {"python3", pythonScriptPath, "--version_dates", dateString};
 
         ProcessBuilder processBuilder = new ProcessBuilder();
-        System.out.println(command.toString());
+        StringBuffer sb = new StringBuffer();
+        for(int i = 0; i < command.length; i++){
+            sb. append(command[i]);
+        }
+        String s = sb.toString();
+        System.out.println(s.toString());
         processBuilder.command(command);
         System.out.println("start cmd");
         Process process = processBuilder.start();
