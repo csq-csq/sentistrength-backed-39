@@ -24,7 +24,7 @@ proxies = {
 }
 
 # 设置结果文件路径
-data_root = "data/"
+data_root = "/home/SE3/sentiSpring/data/"
 res_dirs = []
 
 
