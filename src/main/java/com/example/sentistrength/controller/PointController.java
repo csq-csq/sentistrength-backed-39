@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PointController {
     @Autowired
      private PointService pointService;
+     @PostMapping("analysis")
      public Result getPoint(@RequestBody String sth) {
          System.out.println("Pointcontroller achieve");
          try {
