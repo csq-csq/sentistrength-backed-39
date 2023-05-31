@@ -2,12 +2,13 @@ package com.example.sentistrength.service.impl;
 
 import com.example.sentistrength.service.Rservice;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
+@Service
 public class RserviceImpl implements Rservice {
     public void runRScript() throws IOException, InterruptedException {
         // Step 1: Export the R script
