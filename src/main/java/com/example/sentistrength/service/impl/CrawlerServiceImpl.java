@@ -1,15 +1,27 @@
 package com.example.sentistrength.service.impl;
 
 import com.example.sentistrength.service.CrawlerService;
+import org.springframework.core.io.ClassPathResource;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.List;
 
 public class CrawlerServiceImpl implements CrawlerService {
+    public String exportPythonScript(String scriptName) throws IOException {
+        ClassPathResource classPathResource = new ClassPathResource(scriptName);
+        InputStream inputStream = classPathResource.getInputStream();
+        File pythonScriptFile = File.createTempFile("crawler", ".py");
+        try (OutputStream outputStream = new FileOutputStream(pythonScriptFile)) {
+            int bytesRead;
+            byte[] buffer = new byte[1024];
+            while ((bytesRead = inputStream.read(buffer, 0, 1024)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+        }
+        return pythonScriptFile.getAbsolutePath();
+    }
     public void runPythonScript(List<List<String>> dateList) throws IOException, InterruptedException {
-        String pythonScriptPath = "";
+        String pythonScriptPath =exportPythonScript("crawler.py");
 
         // 构造日期字符串
         StringBuilder dateStringBuilder = new StringBuilder();
