@@ -16,13 +16,13 @@ public class PointController {
     @Autowired
      private PointService pointService;
      public Result getPoint(@RequestBody String sth) {
-         System.out.println("Rcontroller achieve");
+         System.out.println("Pointcontroller achieve");
          try {
-             System.out.println("Rservice achieve");
+             System.out.println("Pointservice achieve");
              pointService.getpoint();
              return new ResultFactory().buildSuccessResult("yes");
          }catch(Exception e){
-             return new ResultFactory().buildFailResult("爬取失败");
+             return new ResultFactory().buildFailResult("失败");
          }
 
      }
