@@ -13,6 +13,7 @@ public class CrawlerServiceImpl implements CrawlerService {
         ClassPathResource classPathResource = new ClassPathResource(scriptName);
         InputStream inputStream = classPathResource.getInputStream();
         File pythonScriptFile = File.createTempFile("crawler", ".py");
+        System.out.println("find py");
         try (OutputStream outputStream = new FileOutputStream(pythonScriptFile)) {
             int bytesRead;
             byte[] buffer = new byte[1024];
@@ -20,9 +21,11 @@ public class CrawlerServiceImpl implements CrawlerService {
                 outputStream.write(buffer, 0, bytesRead);
             }
         }
+        System.out.println("export py Success!");
         return pythonScriptFile.getAbsolutePath();
     }
     public void runPythonScript(List<List<String>> dateList) throws IOException, InterruptedException {
+        System.out.println("get into service!");
         String pythonScriptPath =exportPythonScript("crawler.py");
 
         // 构造日期字符串
@@ -36,13 +39,15 @@ public class CrawlerServiceImpl implements CrawlerService {
 
         ProcessBuilder processBuilder = new ProcessBuilder();
         processBuilder.command(command);
+        System.out.println("start cmd");
         Process process = processBuilder.start();
+        System.out.println("finish cmd");
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+/*        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
         String line;
         while ((line = reader.readLine()) != null) {
             System.out.println(line);
-        }
+        }*/
 
         int exitCode = process.waitFor();
         System.out.println("\nExited with error code : " + exitCode);
