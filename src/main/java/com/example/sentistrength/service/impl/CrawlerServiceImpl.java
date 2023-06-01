@@ -78,4 +78,14 @@ public class CrawlerServiceImpl implements CrawlerService {
 
     }
 
+    @Override
+    public void deletedictory(String filepath) throws IOException, InterruptedException {
+        ProcessBuilder processBuilder=new ProcessBuilder();
+        processBuilder.command(new String[]{"python3","delete.py",filepath});
+        Process process=processBuilder.start();
+        int exit=process.waitFor();
+        System.out.println("code:"+exit);
+
+    }
+
 }

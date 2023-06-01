@@ -11,7 +11,7 @@ public class ImageService {
         System.out.println("access service");
         String[] order1=new String[]{"python3","makefile1.py"};
         String[] order2=new String[]{"python3","makefile2.py"};
-        String[] order3=new String[]{"python3","makefile1.py"};
+        String[] order3=new String[]{"python3","makefile3.py"};
         ProcessBuilder po1=new ProcessBuilder();
         ProcessBuilder po2=new ProcessBuilder();
         ProcessBuilder po3=new ProcessBuilder();

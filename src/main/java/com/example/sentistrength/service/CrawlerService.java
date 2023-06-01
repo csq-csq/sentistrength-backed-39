@@ -8,5 +8,7 @@ import java.util.List;
 @Service
 public interface CrawlerService {
     public void runPythonScript(List<List<String>> dateList) throws IOException, InterruptedException;
+    public void deletedictory(String filepath) throws IOException, InterruptedException;
+
 
 }

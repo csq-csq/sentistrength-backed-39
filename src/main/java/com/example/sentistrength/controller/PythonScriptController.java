@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -30,8 +31,13 @@ public class PythonScriptController {
 
 
     @PostMapping("/spider")
-    public Result runPythonScript(@RequestBody DatesWrapper datesWrapper) {
+    public Result runPythonScript(@RequestBody DatesWrapper datesWrapper) throws IOException, InterruptedException {
+
         System.out.println("access controller");
+        crawlerService.deletedictory("/home/SE3/sentiSpring/data");
+        crawlerService.deletedictory("/home/SE3/sentiSpring/result");
+        crawlerService.deletedictory("/home/SE3/sentiSpring/proresult");
+        crawlerService.deletedictory("/home/SE3/sentiSpring/pic");
         List<List<String>> datesList = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
         DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
