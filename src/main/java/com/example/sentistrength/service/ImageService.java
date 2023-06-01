@@ -7,6 +7,7 @@ import java.io.IOException;
 @Service
 public class ImageService {
     public void runPy() throws IOException, InterruptedException {
+
         System.out.println("access service");
         String[] order1=new String[]{"python3","makefile1.py"};
         String[] order2=new String[]{"python3","makefile2.py"};

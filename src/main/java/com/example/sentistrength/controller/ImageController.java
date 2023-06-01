@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class ImageController {
 
-    private static final String IMAGES_PATH = "/path/to/your/images";
+    private static final String IMAGES_PATH = "/home/SE3/sentiSpring/pic";
     @Autowired
     private ImageService imageService;
 
@@ -32,7 +32,7 @@ public class ImageController {
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {
                 // assuming that your app is running on localhost:8080
-                result.add("http://8.130.116.36/home/SE3/sentiSpring/pic" + listOfFiles[i].getName());
+                result.add("http://8.130.116.36:8080/home/SE3/sentiSpring/pic" + listOfFiles[i].getName());
             }
         }
 
