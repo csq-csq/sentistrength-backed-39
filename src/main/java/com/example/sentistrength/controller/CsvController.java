@@ -3,7 +3,9 @@ package com.example.sentistrength.controller;
 import com.example.sentistrength.result.Result;
 import com.example.sentistrength.result.ResultFactory;
 import com.opencsv.CSVReader;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileReader;
 import java.nio.file.Files;
@@ -14,7 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
-
+@CrossOrigin
+@RestController
 public class CsvController {
     @GetMapping("/api/getCSV")
     public Result getCSV() {
