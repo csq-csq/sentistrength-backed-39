@@ -244,7 +244,7 @@ def crawl_target(owner_name="apache", repo_name="echarts", version_date_list=Non
     version_dates = version_date_list
     res_dirs = []
     for i in range(0, len(version_dates)):
-        res_dirs.append(version_dates[2*i]+"-"version_dates[2*i+1] + "/")
+        res_dirs.append(str(version_dates[2*i])+"-"+str(version_dates[2*i+1]) + "/")
 
     # 开始爬取
     start_crawl = time.time()
