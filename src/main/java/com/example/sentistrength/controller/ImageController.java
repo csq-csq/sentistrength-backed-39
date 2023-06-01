@@ -3,6 +3,7 @@ package com.example.sentistrength.controller;
 import com.example.sentistrength.result.Result;
 import com.example.sentistrength.result.ResultFactory;
 import com.example.sentistrength.service.ImageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import java.util.List;
 public class ImageController {
 
     private static final String IMAGES_PATH = "/path/to/your/images";
+    @Autowired
     private ImageService imageService;
 
     @GetMapping("/getImage")
