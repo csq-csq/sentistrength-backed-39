@@ -45,6 +45,7 @@ public class FileController {
     @Autowired
     FileService fileService;
 
+
     @PostMapping("/upload2")
     public Result upload(MultipartFile file) throws IOException {
         System.out.println("upload--file is"+file);
