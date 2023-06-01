@@ -1,5 +1,7 @@
 package com.example.sentistrength.controller;
 
+import com.example.sentistrength.result.Result;
+import com.example.sentistrength.result.ResultFactory;
 import com.example.sentistrength.service.ImageService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,18 +20,18 @@ public class ImageController {
     private static final String IMAGES_PATH = "/path/to/your/images";
     private ImageService imageService;
     @GetMapping("/getImage")
-    public List<String> getAllImages() throws IOException, InterruptedException {
+    public Result getAllImages() throws IOException, InterruptedException {
         File folder = new File(IMAGES_PATH);
         File[] listOfFiles = folder.listFiles();
-        List<String> imagesUrls = new ArrayList<>();
+        List<String> result = new ArrayList<>();
         imageService.runPy();
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {
                 // assuming that your app is running on localhost:8080
-                imagesUrls.add("http://8.130.116.36/home/SE3/sentiSpring/pic" + listOfFiles[i].getName());
+                result.add("http://8.130.116.36/home/SE3/sentiSpring/pic" + listOfFiles[i].getName());
             }
         }
 
-        return imagesUrls;
+        return ResultFactory.buildSuccessResult(result);
     }
 }
