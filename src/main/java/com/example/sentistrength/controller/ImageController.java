@@ -19,6 +19,7 @@ public class ImageController {
 
     private static final String IMAGES_PATH = "/path/to/your/images";
     private ImageService imageService;
+
     @GetMapping("/getImage")
     public Result getAllImages() throws IOException, InterruptedException {
         System.out.println("access controller!");
