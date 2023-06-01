@@ -62,7 +62,7 @@ for(j in 1:length(folder_list)){
   
   myData=myData[!str_detect(myData$body,"[\\p{Han}]")]
   
-  write_csv(myData,file = store_csv,append = FALSE, col_names = FALSE)
+  #write_csv(myData,file = "/home/SE3/sentiSpring/proresult",append = FALSE, col_names = FALSE)
   #write.table(myData$body, file = "F:/R/res/534version_text.txt",append = FALSE, row.names = FALSE,col.names = FALSE,quote =FALSE)
   write.table(myData, file = store_txt,sep="\t",append = FALSE, row.names = FALSE,col.names = FALSE,quote =FALSE)
   
