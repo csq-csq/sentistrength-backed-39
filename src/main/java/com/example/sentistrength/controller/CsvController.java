@@ -1,5 +1,7 @@
 package com.example.sentistrength.controller;
 
+import com.example.sentistrength.result.Result;
+import com.example.sentistrength.result.ResultFactory;
 import com.opencsv.CSVReader;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -14,8 +16,8 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class CsvController {
-    @GetMapping("/getCSV")
-    public List<Map<String, String>> getCSV() {
+    @GetMapping("/api/getCSV")
+    public Result getCSV() {
         List<Map<String, String>> result = new ArrayList<>();
         String directoryPath = "/home/SE3/sentiSpring/proresult"; // 修改为你的目录路径
 
@@ -40,6 +42,6 @@ public class CsvController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result;
+        return new ResultFactory().buildSuccessResult(result);
     }
 }
