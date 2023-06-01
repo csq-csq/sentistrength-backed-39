@@ -4,10 +4,11 @@ import org.springframework.stereotype.Service;
 import uk.ac.wlv.sentistrength.SentiStrength;
 
 import java.io.File;
+import java.io.IOException;
 
 @Service
 public class PointService {
-    public void getpoint() {
+    public void getpoint() throws InterruptedException, IOException {
         String[] order1={"annotateCol","6","overwrite","uploader","/home/SE3/sentiSpring/result","downloader","/home/SE3/sentiSpring/result"};
         String[] order2={"trinary","annotateCol","6","overwrite","uploader","/home/SE3/sentiSpring/result","downloader","/home/SE3/sentiSpring/result"};
         String[] order3={"scale","annotateCol","6","overwrite","uploader","/home/SE3/sentiSpring/result","downloader","/home/SE3/sentiSpring/result"};
@@ -15,6 +16,12 @@ public class PointService {
         SentiStrength.main(order1);
         SentiStrength.main(order2);
         SentiStrength.main(order3);
+
+        ProcessBuilder processBuilder=new ProcessBuilder();
+        processBuilder.command(new String[]{"python3","turntsvtocsv.py"});
+        Process process=processBuilder.start();
+        int exit=process.waitFor();
+        System.out.println("code:"+exit);
        /* // 创建 File 对象，代表该路径
         File directory = new File(directoryPath);
 

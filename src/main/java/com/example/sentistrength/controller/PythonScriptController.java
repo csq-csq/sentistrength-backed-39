@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -46,10 +47,31 @@ public class PythonScriptController {
         }
         try {
             System.out.println("access service");
+            File directory = new File("/home/SE3/sentiSpring/data");
+            File directory2 = new File("/home/SE3/sentiSpring/result");
+            File directory3 = new File("/home/SE3/sentiSpring/proresult");
+            deleteFilesInDirectory(directory);
+            deleteFilesInDirectory(directory2);
+            deleteFilesInDirectory(directory3);
             crawlerService.runPythonScript(datesList);
             return new ResultFactory().buildSuccessResult("爬取成功");
         } catch (Exception e) {
             return new ResultFactory().buildFailResult("爬取失败");
+        }
+    }
+
+    public static void deleteFilesInDirectory(File directory) {
+        if (directory.isDirectory()) {
+            // directory is a file directory -> get all files
+            File[] entries = directory.listFiles();
+            if (entries != null) {
+                // delete all files within this directory
+                for (File entry : entries) {
+                    if (entry.isFile()) {
+                        entry.delete();
+                    }
+                }
+            }
         }
     }
 }
