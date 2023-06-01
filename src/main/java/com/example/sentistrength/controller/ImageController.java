@@ -21,6 +21,7 @@ public class ImageController {
     private ImageService imageService;
     @GetMapping("/getImage")
     public Result getAllImages() throws IOException, InterruptedException {
+        System.out.println("access controller!");
         File folder = new File(IMAGES_PATH);
         File[] listOfFiles = folder.listFiles();
         List<String> result = new ArrayList<>();
