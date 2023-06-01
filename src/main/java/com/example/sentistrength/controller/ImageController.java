@@ -32,7 +32,7 @@ public class ImageController {
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {
                 // assuming that your app is running on localhost:8080
-                result.add("http://8.130.116.36:8080/home/SE3/sentiSpring/pic" + listOfFiles[i].getName());
+                result.add("http://8.130.116.36/api/images/" + listOfFiles[i].getName());
             }
         }
 
