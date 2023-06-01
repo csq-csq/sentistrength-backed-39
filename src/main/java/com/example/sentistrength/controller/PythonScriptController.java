@@ -47,12 +47,12 @@ public class PythonScriptController {
         }
         try {
             System.out.println("access service");
-            File directory = new File("/home/SE3/sentiSpring/data");
+/*            File directory = new File("/home/SE3/sentiSpring/data");
             File directory2 = new File("/home/SE3/sentiSpring/result");
             File directory3 = new File("/home/SE3/sentiSpring/proresult");
             deleteFilesAndSubdirectories(directory);
             deleteFilesAndSubdirectories(directory2);
-            deleteFilesAndSubdirectories(directory3);
+            deleteFilesAndSubdirectories(directory3);*/
             crawlerService.runPythonScript(datesList);
             return new ResultFactory().buildSuccessResult("爬取成功");
         } catch (Exception e) {
