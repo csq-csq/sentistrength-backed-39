@@ -18,10 +18,12 @@ import java.util.stream.Stream;
 public class CsvController {
     @GetMapping("/api/getCSV")
     public Result getCSV() {
+        System.out.println("access controller");
         List<Map<String, String>> result = new ArrayList<>();
         String directoryPath = "/home/SE3/sentiSpring/proresult"; // 修改为你的目录路径
 
         try (Stream<Path> paths = Files.walk(Paths.get(directoryPath))) {
+            System.out.println("find dictory");
             paths.filter(Files::isRegularFile)
                     .filter(path -> path.toString().endsWith(".csv"))
                     .forEach(path -> {
