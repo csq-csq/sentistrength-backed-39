@@ -9,11 +9,13 @@ import java.io.File;
 public class PointService {
     public void getpoint() {
         String[] order1={"annotateCol","6","input","","overwrite"};
-        String[] order2={"trinary","annotateCol","6","input","","overwrite"};
-        String[] order3={"scale","annotateCol","6","input","","overwrite"};
+        String[] order2={"trinary","annotateCol","6","overwrite","uploader","/home/SE3/sentiSpring/result"};
+        String[] order3={"scale","annotateCol","6","overwrite","uploader","/home/SE3/sentiSpring/result",};
         String directoryPath = "/home/SE3/sentiSpring/result";
-
-        // 创建 File 对象，代表该路径
+        SentiStrength.main(order1);
+        SentiStrength.main(order2);
+        SentiStrength.main(order3);
+       /* // 创建 File 对象，代表该路径
         File directory = new File(directoryPath);
 
         // 判断该路径是否存在且是否是一个目录
@@ -39,7 +41,7 @@ public class PointService {
             }
         } else {
             System.out.println("The directory does not exist or is not a directory.");
-        }
+        }*/
 
     }
 }
