@@ -13,10 +13,10 @@ public class SentistrengthApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(SentistrengthApplication.class, args);
-        String[] arg={"trinary","annotateCol","6","overwrite","uploader","E:\\SE3\\dsfw.txt","downloader","E:\\SE3\\dsfw.txt"};
+      /*  *//*String[] arg={"trinary","annotateCol","6","overwrite","uploader","E:\\SE3\\dsfw.txt","downloader","E:\\SE3\\dsfw.txt"};
         File directory = new File("E:\\SE3\\dsfw.txt");
-        System.out.println(directory.exists());
-        SentiStrength.main(arg);
+        System.out.println(directory.exists());*//*
+        SentiStrength.main(arg);*/
     }
 
 }
