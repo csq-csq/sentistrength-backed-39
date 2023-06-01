@@ -8,7 +8,7 @@ import java.io.File;
 @Service
 public class PointService {
     public void getpoint() {
-        String[] order1={"annotateCol","6","input","","overwrite"};
+        String[] order1={"annotateCol","6","overwrite","uploader","/home/SE3/sentiSpring/result","downloader","/home/SE3/sentiSpring/result"};
         String[] order2={"trinary","annotateCol","6","overwrite","uploader","/home/SE3/sentiSpring/result","downloader","/home/SE3/sentiSpring/result"};
         String[] order3={"scale","annotateCol","6","overwrite","uploader","/home/SE3/sentiSpring/result","downloader","/home/SE3/sentiSpring/result"};
         String directoryPath = "/home/SE3/sentiSpring/result";
