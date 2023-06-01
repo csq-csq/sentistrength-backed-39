@@ -8,6 +8,16 @@ import java.io.IOException;
 
 @Service
 public class PointService {
+    private String[] filename;
+
+    public String[] getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String[] filename) {
+        this.filename = filename;
+    }
+
     public void getpoint() throws InterruptedException, IOException {
         String[] order1={"annotateCol","6","overwrite","uploader","/home/SE3/sentiSpring/result","downloader","/home/SE3/sentiSpring/result"};
         String[] order2={"trinary","annotateCol","6","overwrite","uploader","/home/SE3/sentiSpring/result","downloader","/home/SE3/sentiSpring/result"};
